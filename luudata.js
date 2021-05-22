@@ -123,6 +123,23 @@ recognition.onerror = (err) => {
 }
 recognition.onresult = (e) => {
     let text = e.results[0][0].transcript;
+    laytext(text);
+};
+    var screen = screen.availWidth; 
+    if(screen < 1000) {
+     document.querySelector("#w3review").innerText = "";
+    }
+console.log(screen);
+document.querySelector("#w3review").addEventListener("change", mobileAI );
+function mobileAI () {
+    var w3review = document.querySelector("#w3review");
+    var x =  document.querySelector("#checkbox");
+    value = w3review.value;
+    if(x.checked == true) {
+      laytext(value);
+    }
+}
+function laytext (text) {
     switch (text) {
         case "một":
          text = 1;
@@ -184,8 +201,8 @@ recognition.onresult = (e) => {
            }, 500);
           break;
       }
-};
-if(!save) {
+}
+if(!save) { 
     var array = [];
     localStorage.setItem("save" , JSON.stringify(array));
 }
