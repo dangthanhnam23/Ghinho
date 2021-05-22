@@ -2,6 +2,7 @@
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition; 
 const recognition = new SpeechRecognition(); 
 const mic = document.querySelector(".mic");
+const input  = document.querySelector(".input");
 const chat = document.querySelector(".chat");
 const texts = document.querySelector(".text");
 let textend = "";
@@ -109,6 +110,11 @@ function giongnoi(text) {
     responsiveVoice.setDefaultVoice("Vietnamese Female");
     responsiveVoice.speak(text);
 }
+input.onclick = (e) => {
+    textend = "";
+    var value =  w3review.value;
+    laytext(value);
+}
 mic.onclick = (e) => {
     textend = "";
     recognition.start();
@@ -131,8 +137,7 @@ recognition.onresult = (e) => {
     }
 console.log(screen);
 document.querySelector("#w3review").addEventListener("change", mobileAI );
-function mobileAI () {
-    var w3review = document.querySelector("#w3review");
+function mobileAI() {
     var x =  document.querySelector("#checkbox");
     value = w3review.value;
     if(x.checked == true) {
